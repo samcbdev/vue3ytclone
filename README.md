@@ -1,33 +1,19 @@
-# vue3ytclone
+# youtubeclone
 
-#rapid API
-  https://rapidapi.com/ytjar/api/yt-api
-  
-#html template
-  https://bootstraplily.com/download-free-youtube-home-page-ui-design-using-twitter-bootstrap/
+## Project setup
+```
+npm install
+```
 
-#owl carousel
-  https://www.npmjs.com/package/vue-owl-carousel
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-#ref code
+### Compiles and minifies for production
+```
+npm run build
+```
 
-async streamVdo(vdoId) {
-    const options = {
-    method: 'GET',
-    url: 'dl',
-    params: {id: vdoId},
-    headers: {
-        'X-RapidAPI-Key': '',
-        'X-RapidAPI-Host': ''
-    }
-    };
-
-    const res = await axios.request(options).then(function (response) {
-        return response.data
-    })
-    this.videoUrl = res.formats[1].url
-}
-
-<iframe :src="videoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        
-        
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
