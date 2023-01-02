@@ -1,11 +1,9 @@
 <template>
-  <div id="yt-stream">
-    <video controls data-play="hover" muted="muted">
-            <source
-            :src="videoUrl"
-            type="video/mp4"
-            />
-    </video>
+    <div id="yt-stream">
+        <div class="embed-responsive embed-responsive-16by9">
+            <!-- <iframe class="embed-responsive-item" src="..."></iframe> -->
+            <video class="embed-responsive-item" data-play="hover" ref="videoPlayer" :src="videoUrl" autoplay controls />
+        </div>
   </div>
 </template>
 
@@ -25,11 +23,14 @@ export default {
         return { ytStore };
     },
     methods: {
-        playVdo(id) {
-            const searchRes = this.ytStore.getsingleVdo(id)
-            this.videoUrl = searchRes
-            console.log(searchRes);
-        }
+        async playVdo(id) {
+            try {
+                const searchRes = await this.ytStore.getsingleVdo(id)
+                this.videoUrl = searchRes.formats[1].url
+            } catch (error) {
+                console.log(error);
+            }
+        },
     },
     mounted() {
         this.playVdo(this.$route.params.id)

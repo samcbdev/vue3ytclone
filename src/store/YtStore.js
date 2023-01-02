@@ -7,7 +7,7 @@ const initialState = () => ({
         count: 0,
         data: []
     },
-    vdoData: {}
+    videoData: {}
 })
 
 export const useYtStore = defineStore('Yt', {
@@ -19,19 +19,51 @@ export const useYtStore = defineStore('Yt', {
     },
     actions: {
         async fetchSearchResults(data) {
-            return await Service.get('/search', {query: data}).then((res) => {
-                this.searchResults.count = res.estimatedResults
-                this.searchResults.data = res.data
+            try {
+                const response = await Service.get('/search', {query: data})
+                this.searchResults.count = response.estimatedResults
+                this.searchResults.data = response.data
                 this.searchResults.searchTitle = data
-                return res
-            })
+                return response
+            } catch (error) {
+                console.log(error);
+                throw error;  
+            }
+            // return await Service.get('/search', {query: data}).then((res) => {
+            //     this.searchResults.count = res.estimatedResults
+            //     this.searchResults.data = res.data
+            //     this.searchResults.searchTitle = data
+            //     return res
+            // })
+        },
+        async fetchTrendResults() {
+            try {
+                const response = await Service.get('/trending', {geo: 'IN'})
+                console.log(response);
+                this.searchResults.count = "Top"
+                this.searchResults.data = response.data
+                this.searchResults.searchTitle = "trending"
+                return response
+            } catch (error) {
+                console.log(error);
+                throw error;  
+            }
+            // return await Service.get('/search', {query: data}).then((res) => {
+            //     this.searchResults.count = res.estimatedResults
+            //     this.searchResults.data = res.data
+            //     this.searchResults.searchTitle = data
+            //     return res
+            // })
         },
         async getsingleVdo(data) {
-            return await Service.get('/dl', {id: data}).then((res) => {
-                this.vdoData = res
-                return res
-                // console.log(res);
-            })
+            try {
+                const response = await Service.get('/dl', {id: data})
+                this.videoData = response
+                return response;
+             } catch (error) {
+                console.log(error);
+                throw error;  
+             }
         }
     }
 })

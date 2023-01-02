@@ -1,5 +1,4 @@
 import BaseService, { baseURL } from './BaseService'
-import axios from 'axios';
 
 class Service {
     get(url, value) {

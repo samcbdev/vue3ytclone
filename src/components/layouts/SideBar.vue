@@ -7,7 +7,7 @@
             <router-link class="list-group-item list-group-item-action" to="/">
               <i class="fas fa-home mr-3"></i> Home
             </router-link>
-            <router-link class="list-group-item list-group-item-action" to="about">
+            <router-link class="list-group-item list-group-item-action" to="/about">
               <i class="fas fa-fire mr-3"></i> Trending
             </router-link>
             <a href="#" class="list-group-item list-group-item-action">

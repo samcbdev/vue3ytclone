@@ -46,7 +46,7 @@ export default {
   name: "global",
   data () {
     return {
-      search: 'samcb_cb'
+      search: ''
     }
   },
   components: {
@@ -60,10 +60,16 @@ export default {
   methods: {
     searchInput() {
       this.ytStore.fetchSearchResults(this.search)
+    },
+    getTrend() {
+      this.ytStore.fetchTrendResults()
     }
   },
+  created() {
+    this.getTrend()
+  },
   mounted() {
-    this.searchInput()
+    this.getTrend()
   }
 };
 </script>

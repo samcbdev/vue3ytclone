@@ -175,7 +175,6 @@ export default {
     },
     watchVdo(vdoId) {
       this.$router.push({ name: 'yt-stream', params: { id: vdoId } });
-      console.log(vdoId);
     }
   },
   watch: {
