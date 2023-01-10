@@ -17,3 +17,6 @@ npm run build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+#rapid API
+  https://rapidapi.com/ytjar/api/yt-api
